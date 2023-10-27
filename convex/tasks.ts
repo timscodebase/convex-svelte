@@ -8,11 +8,10 @@ export const get = query({
   }
 })
 
-// Create a new task with the given text
 export const createTask = mutation({
   args: { text: v.string() },
   handler: async (ctx, args) => {
-    const newTaskId = await ctx.db.insert('tasks', { text: args.text })
+    const newTaskId = await ctx.db.insert('tasks', { text: args.text, completed: false })
     return newTaskId
   }
 })
